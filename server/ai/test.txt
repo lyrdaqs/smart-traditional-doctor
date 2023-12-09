@@ -1,0 +1,46 @@
+SELECT illness, max(simularity) as s FROM doctorai.illness_sign
+WHERE (sign = 'تب')
+group by illness
+order by s desc;
+
+
+SELECT sign, count(*) as c FROM
+((SELECT sign , max(simularity) as s FROM doctorai.illness_sign
+WHERE (illness = 'آنفلوآنزا')
+GROUP BY sign LIMIT 10)
+UNION
+(SELECT sign , max(simularity) as s FROM doctorai.illness_sign
+WHERE (illness = 'آنفلوآنزای خوکی')
+GROUP BY sign LIMIT 10)
+UNION
+(SELECT sign , max(simularity) as s FROM doctorai.illness_sign
+WHERE (illness = 'سرماخوردگی')
+GROUP BY sign LIMIT 10)
+) sign_ill
+GROUP BY sign
+ORDER BY c desc;
+
+
+SELECT illness, avg(s) as s FROM
+(SELECT illness , max(simularity) as s FROM doctorai.illness_sign
+WHERE (sign = 'سوزش ادرار')
+GROUP BY illness
+UNION
+SELECT illness , max(simularity) as s FROM doctorai.illness_sign
+WHERE (sign = 'تب')
+GROUP BY illness
+UNION
+SELECT illness , max(simularity) as s FROM doctorai.illness_sign
+WHERE (sign = 'سرفه')
+GROUP BY illness) sign_ill
+GROUP BY illness
+ORDER BY s desc
+LIMIT 10;
+
+SELECT medicine , max(simularity) as s FROM doctorai.medicine_illness
+WHERE (illness = 'عفونت ادراری')
+GROUP BY medicine
+ORDER BY s desc
+LIMIT 10;
+
+select * from doctorai.illness_sign

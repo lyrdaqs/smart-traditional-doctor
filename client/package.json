@@ -1,0 +1,25 @@
+{
+  "name": "doctor",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "axios": "^1.5.0",
+    "bootstrap": "^5.3.1",
+    "jquery": "^3.7.1",
+    "popper": "^1.0.1",
+    "popper.js": "^1.16.1",
+    "vue": "^3.3.4",
+    "vue-plugin-load-script": "^2.1.1",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.3.1",
+    "vite": "^4.4.9"
+  }
+}
